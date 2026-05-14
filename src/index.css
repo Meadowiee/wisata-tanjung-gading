@@ -36,6 +36,47 @@
   backdrop-filter: blur(12px);
 }
 
+/* Customizing the DatePicker Popover */
+/* Container styling */
+.react-datepicker-popper {
+  z-index: 100 !important;
+}
+
+.react-datepicker {
+  border: none !important;
+  border-radius: 2rem !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+  padding: 1rem !important;
+  font-family: inherit !important;
+}
+
+/* Header & Day names */
+.react-datepicker__header {
+  background: white !important;
+  border-bottom: none !important;
+}
+
+/* The Range Highlight (The "Soft Green" between dates) */
+.react-datepicker__day--in-range {
+  background-color: rgba(var(--color-primary-green), 0.1) !important;
+  color: var(--color-primary-green)!important;
+}
+
+/* The Selected Start and End Dates */
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end,
+.react-datepicker__day--selected {
+  background-color: var(--color-primary-green) !important; /* Use your primary-green hex */
+  color: white !important;
+  border-radius: 0.75rem !important;
+}
+
+/* Day hover */
+.react-datepicker__day:hover {
+  border-radius: 0.75rem !important;
+  background-color: #f3f4f6 !important;
+}
+
 @keyframes slow-zoom {
   0% { transform: scale(1); }
   100% { transform: scale(1.1); }

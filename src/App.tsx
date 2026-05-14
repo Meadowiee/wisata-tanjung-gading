@@ -3,8 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Listbox, Transition } from '@headlessui/react';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 import { 
   Calendar, 
   Users, 
@@ -19,10 +23,18 @@ import {
   Home,
   Camera,
   Info,
-  Waves
+  Waves,
+  ChevronDown,
+  Check
 } from 'lucide-react';
 
 // --- Constants & Types ---
+
+const CONTACT_METHODS = [
+  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/wisata_tanjung_gading' },
+  { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/wisata.tanjunggading' },
+  { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6281234567890' },
+];
 
 const NAVBAR_LINKS = [
   { name: 'Beranda', href: '#home', icon: Home },
@@ -82,7 +94,7 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-nav py-4 luxury-shadow' : 'bg-transparent py-6'}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-nav py-4 luxury-shadow' : 'bg-resort-beige py-4'}`}
       role="navigation"
       aria-label="Main Navigation"
     >
@@ -163,48 +175,126 @@ const Navbar = () => {
     </nav>
   );
 };
+const CustomSelect = ({ label, icon: Icon, options, selected, setSelected }) => (
+  <div className="w-full flex-1">
+    <Listbox value={selected} onChange={setSelected}>
+      <div className="relative">
+        <Listbox.Button className="w-full text-left p-4 md:p-2 rounded-2xl md:rounded-none hover:bg-resort-beige/20 transition-colors focus:outline-none group">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-resort-dark/40 flex items-center gap-2 mb-1">
+            <Icon size={14} className="group-hover:text-primary-green transition-colors" /> {label}
+          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-semibold text-resort-dark truncate">{selected}</span>
+            <ChevronDown size={14} className="text-resort-dark/20 group-hover:text-resort-dark/50" />
+          </div>
+        </Listbox.Button>
+
+        <Transition
+          as={Fragment}
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Listbox.Options className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-2xl bg-white py-2 shadow-2xl ring-1 ring-black/5 focus:outline-none">
+            {options.map((opt, idx) => (
+              <Listbox.Option
+                key={idx}
+                value={opt}
+                className={({ active }) =>
+                  `relative cursor-pointer select-none py-3 px-5 text-sm transition-colors ${
+                    active ? 'bg-primary-green/5 text-primary-green' : 'text-resort-dark'
+                  }`
+                }
+              >
+                {({ selected }) => (
+                  <div className="flex items-center justify-between">
+                    <span className={selected ? 'font-bold' : 'font-normal'}>{opt}</span>
+                    {selected && <Check size={14} />}
+                  </div>
+                )}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </Transition>
+      </div>
+    </Listbox>
+  </div>
+);
 
 const BookingShortcut = () => {
+  const [guests, setGuests] = useState('1-2 Orang');
+  const [type, setType] = useState('Deluxe Gazebo');
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const sendWhatsApp = () => {
+    const message = `Halo Wisata Tanjung Gading, saya ingin memesan ${type} untuk ${guests} dari tanggal ${startDate.toLocaleDateString()} ${endDate ? 'hingga' + endDate.toLocaleDateString() : ''}. Mohon infonya, terima kasih!`;
+    const url = `${CONTACT_METHODS[2].href}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
+
   return (
-    <div id="booking" className="w-full max-w-5xl mx-auto -mt-12 relative z-20 px-6">
-      <div className="bg-white p-6 md:p-8 rounded-3xl luxury-shadow flex flex-col md:flex-row items-center gap-6 border border-resort-dark/5" role="form" aria-label="Quick Booking">
-        <div className="flex-1 w-full space-y-2">
-          <label htmlFor="quick-date" className="text-[10px] uppercase tracking-widest font-bold text-resort-dark/40 flex items-center gap-1">
-            <Calendar size={12} aria-hidden="true" /> Tanggal Menginap
+    <div id="booking" className="w-full max-w-6xl mx-auto -mt-12 relative z-30 px-6">
+      <div className="bg-white p-3 md:p-2 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-stretch md:items-center border border-resort-dark/5">
+        
+        {/* Date Section*/}
+        <div className="flex-[1.4] p-4 md:py-3 md:px-6 rounded-2xl md:rounded-none hover:bg-resort-beige/20 transition-colors group relative">
+          <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-resort-dark/40 flex items-center gap-2 mb-1 cursor-pointer">
+            <Calendar size={14} className="group-hover:text-primary-green transition-colors" /> 
+            Durasi Menginap
           </label>
-          <input 
-            id="quick-date"
-            type="date" 
-            className="w-full border-b border-resort-dark/10 py-2 focus:border-primary-green outline-none transition-colors text-sm focus-visible:border-primary-green"
+          
+          <div className="flex items-center">
+            <DatePicker
+              selected={startDate}
+              onChange={onChange}
+              startDate={startDate}
+              endDate={endDate}
+              selectsRange
+              minDate={new Date()}
+              monthsShown={1}
+              placeholderText="Pilih Tanggal"
+              className="w-full bg-transparent border-none p-0 focus:ring-0 text-sm font-semibold text-resort-dark outline-none cursor-pointer placeholder:text-resort-dark/20"
+            />
+          </div>
+        </div>
+
+        <div className="hidden md:block w-px h-10 bg-resort-dark/10" />
+
+        {/* Guests Dropdown */}
+        <div className="flex-1 md:px-2">
+          <CustomSelect 
+            label="Jumlah Orang" 
+            icon={Users} 
+            options={['1-2 Orang', '3-4 Orang', '5+ Orang']} 
+            selected={guests} 
+            setSelected={setGuests} 
           />
         </div>
-        <div className="flex-1 w-full space-y-2">
-          <label htmlFor="quick-guests" className="text-[10px] uppercase tracking-widest font-bold text-resort-dark/40 flex items-center gap-1">
-            <Users size={12} aria-hidden="true" /> Jumlah Orang
-          </label>
-          <select 
-            id="quick-guests"
-            className="w-full border-b border-resort-dark/10 py-2 focus:border-primary-green outline-none transition-colors text-sm focus-visible:border-primary-green"
-          >
-            <option>1-2 Orang</option>
-            <option>3-4 Orang</option>
-            <option>5+ Orang</option>
-          </select>
+
+        <div className="hidden md:block w-px h-10 bg-resort-dark/10" />
+
+        {/* Gazebo Type Dropdown */}
+        <div className="flex-1 md:px-2">
+          <CustomSelect 
+            label="Tipe Gazebo" 
+            icon={Waves} 
+            options={['Standard Gazebo', 'Deluxe Gazebo', 'Royal Family']} 
+            selected={type} 
+            setSelected={setType} 
+          />
         </div>
-        <div className="flex-1 w-full space-y-2">
-          <label htmlFor="quick-type" className="text-[10px] uppercase tracking-widest font-bold text-resort-dark/40 flex items-center gap-1">
-            <Waves size={12} aria-hidden="true" /> Tipe Gazebo
-          </label>
-          <select 
-            id="quick-type"
-            className="w-full border-b border-resort-dark/10 py-2 focus:border-primary-green outline-none transition-colors text-sm focus-visible:border-primary-green"
-          >
-            {RESORT_TYPES.map(type => (
-              <option key={type.id}>{type.title}</option>
-            ))}
-          </select>
-        </div>
-        <button className="w-full md:w-auto bg-primary-green text-resort-beige px-10 py-4 rounded-2xl font-semibold uppercase text-xs tracking-widest hover:bg-primary-brown transition-all shadow-xl hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 outline-none">
+
+        {/* Action Button*/}
+        <button 
+          onClick={sendWhatsApp}
+          className="w-full md:w-auto bg-primary-green text-white px-10 py-5 md:py-4 md:ml-2 rounded-[1.8rem] font-bold uppercase text-[11px] tracking-widest hover:bg-primary-brown transition-all shadow-lg hover:shadow-primary-green/20 active:scale-95 whitespace-nowrap">
           Cek Ketersediaan
         </button>
       </div>
@@ -251,7 +341,7 @@ const BookingForm = () => {
 
   const sendWhatsApp = () => {
     const message = `Halo Wisata Tanjung Gading, saya ${formData.name}. Saya ingin memesan ${formData.type} untuk ${formData.guests} pada tanggal ${formData.date}. Kontak saya: ${formData.contact}. Mohon infonya, terima kasih!`;
-    const url = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
+    const url = `${CONTACT_METHODS[2].href}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
@@ -517,8 +607,17 @@ export default function App() {
               Natural resort terbaik di Sangatta yang mengusung konsep ramah lingkungan dan integrasi alam. Rasakan kedamaian yang sesungguhnya bersama kami.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 border border-resort-beige/20 rounded-full flex items-center justify-center hover:bg-primary-green hover:border-transparent transition-all"><Instagram size={20} /></a>
-              <a href="#" className="w-10 h-10 border border-resort-beige/20 rounded-full flex items-center justify-center hover:bg-primary-green hover:border-transparent transition-all"><Facebook size={20} /></a>
+              {CONTACT_METHODS.map((method, index) => (
+                <a
+                  key={index}
+                  href={method.href}
+                  className="w-10 h-10 border border-resort-beige/20 rounded-full flex items-center justify-center hover:bg-primary-green hover:border-transparent transition-all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <method.icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -531,7 +630,7 @@ export default function App() {
             </ul>
           </div>
 
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <h4 className="font-bold uppercase text-xs tracking-[0.3em]">Newsletter</h4>
             <p className="text-resort-beige/50 text-sm">Dapatkan info promo dan event spesial langsung di email Anda.</p>
             <div className="flex border-b border-resort-beige/20 pb-2">
@@ -542,14 +641,14 @@ export default function App() {
               />
               <button className="text-primary-green"><ArrowRight size={20} /></button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="container mx-auto px-6 mt-20 pt-8 border-t border-resort-beige/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-resort-beige/30">
           <span>&copy; 2026 Wisata Tanjung Gading. All Rights Reserved.</span>
-          <div className="flex gap-8">
+          {/* <div className="flex gap-8">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
-          </div>
+          </div> */}
         </div>
       </footer>
     </div>
