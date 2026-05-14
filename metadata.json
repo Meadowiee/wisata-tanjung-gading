@@ -1,0 +1,6 @@
+{
+  "name": "Wisata Tanjung Gading",
+  "description": "A modern landing page for Natural Resort Wisata Tanjung Gading in Kalimantan Timur, featuring booking integration and immersive gallery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
