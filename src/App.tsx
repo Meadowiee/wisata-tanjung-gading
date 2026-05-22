@@ -46,25 +46,25 @@ const NAVBAR_LINKS = [
 
 const RESORT_TYPES = [
   {
-    id: 'premium-villa',
-    title: 'Villa Premium Sangatta',
-    description: 'Vila kayu eksklusif dengan pemandangan langsung ke taman tropis dan fasilitas lengkap.',
+    id: 'pilihan-1',
+    title: 'Pilihan 1',
+    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     price: 'Rp 1.200.000 / Malam',
     features: ['King Size Bed', 'AC', 'Private Terrace', 'Breakfast Included'],
     image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'luxury-gazebo',
-    title: 'Gazebo Mewah Tepi Kolam',
-    description: 'Gazebo tradisional yang nyaman untuk bersantai bersama keluarga dengan suasana asri.',
+    id: 'pilihan-2',
+    title: 'Pilihan 2',
+    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     price: 'Rp 500.000 / Hari',
     features: ['Comfortable Seating', 'Electric Socket', 'Near Pool', 'Fan'],
     image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'family-pod',
-    title: 'Family Forest Pod',
-    description: 'Akomodasi unik berbentuk kapsul kayu yang menyatu dengan alam Sangatta.',
+    id: 'pilihan-3',
+    title: 'Pilihan 3',
+    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     price: 'Rp 850.000 / Malam',
     features: ['Nature View', 'Unique Design', 'Cozy Interior', 'Eco Friendly'],
     image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800'
@@ -285,7 +285,7 @@ const BookingShortcut = () => {
           <CustomSelect 
             label="Tipe Gazebo" 
             icon={Waves} 
-            options={['Standard Gazebo', 'Deluxe Gazebo', 'Royal Family']} 
+            options={['Pilihan 1', 'Pilihan 2', 'Pilihan 3']} 
             selected={type} 
             setSelected={setType} 
           />
@@ -351,9 +351,9 @@ const BookingForm = () => {
         <div className="lg:w-1/2 space-y-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4" aria-hidden="true">Hubungi Kami</span>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Mulai Petualangan Alam Anda Hari Ini</h2>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Lorem ipsum dolor sit amet</h2>
             <p className="text-resort-dark/60 mt-6 leading-relaxed">
-              Tim kami siap membantu reservasi dan menjawab pertanyaan Anda seputar fasilitas Wisata Tanjung Gading. Nikmati ketenangan luar biasa di Sangatta, Kalimantan Timur.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad reiciendis quaerat laboriosam quo, minima aliquam tempora molestias illo asperiores ipsum quia veritatis, voluptatum atque, quam illum? Corporis quos repellat rerum.
             </p>
           </div>
           
@@ -476,7 +476,7 @@ export default function App() {
               Wisata <br /> <span className="text-primary-green">Tanjung Gading</span>
             </h1>
             <p className="text-resort-beige/70 max-w-xl mx-auto text-lg font-light leading-relaxed mb-10">
-              Temukan harmoni sempurna antara kemewahan modern dan keasrian alam tropis Sangatta, Kalimantan Timur.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, minus! Sit modi enim eligendi a inventore quos amet laborum suscipit!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="#about" className="bg-resort-beige text-resort-dark px-10 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-primary-green hover:text-white transition-all shadow-2xl">
@@ -520,12 +520,14 @@ export default function App() {
           
           <div className="space-y-8">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green">Selamat Datang</span>
-            <h2 className="text-5xl md:text-6xl font-serif leading-tight">Oasis Ketenangan di Jantung Sangatta</h2>
+            <h2 className="text-5xl md:text-6xl font-serif leading-tight">
+              Lorem ipsum dolor sit amet
+            </h2>
             <p className="text-resort-dark/60 leading-relaxed text-lg italic">
-              "Tanjung Gading adalah perwujudan dari kecintaan kami terhadap alam Kalimantan. Setiap sudut dirancang untuk memberikan kenyamanan tanpa merusak ekosistem."
+              "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             </p>
             <p className="text-resort-dark/60 leading-relaxed">
-              Wisata Tanjung Gading merupakan destinasi wisata alam (Natural Resort) unggulan di Sangatta, Kalimantan Timur. Kami menawarkan pengalaman unik menginap di tengah hutan tropis yang asri dengan fasilitas modern yang memanjakan.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet minima placeat officia recusandae dicta vitae aspernatur culpa nostrum facilis. Quod at quam possimus architecto labore praesentium provident adipisci inventore eligendi.
             </p>
             <div className="grid grid-cols-2 gap-8 py-6">
               <div>
@@ -534,12 +536,12 @@ export default function App() {
               </div>
               <div>
                 <h4 className="text-3xl font-serif text-primary-green">500+</h4>
-                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Happy Visitors</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Weekly Visitors</p>
               </div>
             </div>
-            <button className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest group">
+            {/* <button className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest group">
               Baca Selengkapnya <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
@@ -551,7 +553,7 @@ export default function App() {
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4">Akomodasi</span>
             <h2 className="text-4xl md:text-6xl font-serif">Pilih Pengalaman Anda</h2>
           </div>
-          <p className="text-resort-dark/60 md:text-right max-w-sm mb-2">Pilih dari berbagai gazebo dan villa kayu eksklusif sesuai kebutuhan istirahat Anda.</p>
+          <p className="text-resort-dark/60 md:text-right max-w-sm mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
         </div>
 
         <div className="container mx-auto px-6 grid md:grid-cols-3 gap-10">
@@ -604,7 +606,7 @@ export default function App() {
               <h2 className="text-2xl font-serif font-bold tracking-tight">Wisata Tanjung Gading</h2>
             </div>
             <p className="text-resort-beige/50 max-w-sm leading-relaxed">
-              Natural resort terbaik di Sangatta yang mengusung konsep ramah lingkungan dan integrasi alam. Rasakan kedamaian yang sesungguhnya bersama kami.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda earum amet vel illo eveniet exercitationem eos sunt unde consequatur optio iste, harum, libero fugit ducimus placeat. Autem at odio dolorum.
             </p>
             <div className="flex gap-4">
               {CONTACT_METHODS.map((method, index) => (
