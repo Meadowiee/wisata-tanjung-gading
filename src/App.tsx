@@ -33,40 +33,40 @@ import {
 const CONTACT_METHODS = [
   { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/wisata_tanjung_gading' },
   { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/wisata.tanjunggading' },
-  { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6281234567890' },
+  { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6281352774542' }, // Menggunakan nomor resmi dari web
 ];
 
 const NAVBAR_LINKS = [
   { name: 'Beranda', href: '#home', icon: Home },
   { name: 'Tentang', href: '#about', icon: Info },
-  { name: 'Tipe Resort', href: '#resorts', icon: Waves },
+  { name: 'Tipe Fasilitas', href: '#resorts', icon: Waves },
   { name: 'Galeri', href: '#gallery', icon: Camera },
   { name: 'Kontak', href: '#contact', icon: Phone },
 ];
 
 const RESORT_TYPES = [
   {
-    id: 'pilihan-1',
-    title: 'Pilihan 1',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    price: 'Rp 1.200.000 / Malam',
-    features: ['King Size Bed', 'AC', 'Private Terrace', 'Breakfast Included'],
-    image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: 'pilihan-2',
-    title: 'Pilihan 2',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    price: 'Rp 500.000 / Hari',
-    features: ['Comfortable Seating', 'Electric Socket', 'Near Pool', 'Fan'],
+    id: 'gazebo-vip',
+    title: 'Sewa Gazebo Utama',
+    description: 'Pondokan kayu eksklusif di tepi danau yang menawarkan keteduhan alam sembari berkumpul intim bersama seluruh anggota keluarga besar Anda.',
+    price: 'Rp 50.000 / Sesi', // Menggunakan placeholder tarif lokal sewa gazebo
+    features: ['Lake View', 'Kapasitas 10 Orang', 'Dekat Area Kantin', 'Stop Kontak'],
     image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'pilihan-3',
-    title: 'Pilihan 3',
-    description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    price: 'Rp 850.000 / Malam',
-    features: ['Nature View', 'Unique Design', 'Cozy Interior', 'Eco Friendly'],
+    id: 'wahana-air',
+    title: 'Wahana Sepeda Air',
+    description: 'Jelajahi keindahan lanskap air Tanjung Gading dengan unit bebek air ikonik. Sempurna untuk aktivitas santai sore hari.',
+    price: 'Rp 25.000 / Jam', // Placeholder tarif wahana rekreasi air
+    features: ['Safety Life Jacket', 'Kapasitas 2 Dewasa', 'Mudah Dikayuh', 'Spot Foto Danau'],
+    image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'gathering-area',
+    title: 'Kawasan Gathering Sosial',
+    description: 'Paket sewa area terbuka hijau terpadu untuk kebutuhan arisan komunitas, perayaan hari jadi, maupun agenda outbound korporat berskala menengah.',
+    price: 'Hubungi Kami',
+    features: ['Area Luas', 'Akses Jembatan Kayu', 'Ramah Anak', 'Dekat Mushola & Toilet'],
     image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800'
   }
 ];
@@ -123,7 +123,7 @@ const Navbar = () => {
             href="#booking"
             className="bg-primary-green text-resort-beige px-6 py-2 rounded-full text-sm font-medium uppercase tracking-widest hover:bg-primary-brown transition-all shadow-lg active:scale-95 focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 outline-none"
           >
-            Booking Now
+            Reservasi Tempat
           </a>
         </div>
 
@@ -167,7 +167,7 @@ const Navbar = () => {
               className="bg-primary-green text-resort-beige px-10 py-3 rounded-full text-sm font-medium uppercase tracking-widest focus-visible:ring-2 focus-visible:ring-primary-green outline-none"
               role="menuitem"
             >
-              Booking Now
+              Reservasi Tempat
             </a>
           </motion.div>
         )}
@@ -175,6 +175,7 @@ const Navbar = () => {
     </nav>
   );
 };
+
 const CustomSelect = ({ label, icon: Icon, options, selected, setSelected }) => (
   <div className="w-full flex-1">
     <Listbox value={selected} onChange={setSelected}>
@@ -222,19 +223,13 @@ const CustomSelect = ({ label, icon: Icon, options, selected, setSelected }) => 
 );
 
 const BookingShortcut = () => {
-  const [guests, setGuests] = useState('1-2 Orang');
-  const [type, setType] = useState('Deluxe Gazebo');
+  const [guests, setGuests] = useState('1-5 Orang');
+  const [type, setType] = useState('Sewa Gazebo Utama');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
 
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
-
   const sendWhatsApp = () => {
-    const message = `Halo Wisata Tanjung Gading, saya ingin memesan ${type} untuk ${guests} dari tanggal ${startDate.toLocaleDateString()} ${endDate ? 'hingga' + endDate.toLocaleDateString() : ''}. Mohon infonya, terima kasih!`;
+    const message = `Halo Wisata Tanjung Gading Balikpapan, saya ingin bertanya ketersediaan untuk "${type}" bagi rombongan sejumlah "${guests}" dari tanggal ${startDate.toLocaleDateString('id-ID')} ${endDate ? 'hingga ' + endDate.toLocaleDateString('id-ID') : ''}. Mohon infonya, terima kasih!`;
     const url = `${CONTACT_METHODS[2].href}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -247,19 +242,23 @@ const BookingShortcut = () => {
         <div className="flex-[1.4] p-4 md:py-3 md:px-6 rounded-2xl md:rounded-none hover:bg-resort-beige/20 transition-colors group relative">
           <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-resort-dark/40 flex items-center gap-2 mb-1 cursor-pointer">
             <Calendar size={14} className="group-hover:text-primary-green transition-colors" /> 
-            Durasi Menginap
+            Durasi Kunjungan
           </label>
           
           <div className="flex items-center">
             <DatePicker
               selected={startDate}
-              onChange={onChange}
+              onChange={(dates) => {
+                const [start, end] = dates;
+                setStartDate(start);
+                setEndDate(end);
+              }}
               startDate={startDate}
               endDate={endDate}
               selectsRange
               minDate={new Date()}
               monthsShown={1}
-              placeholderText="Pilih Tanggal"
+              placeholderText="Pilih Tanggal Kunjungan"
               className="w-full bg-transparent border-none p-0 focus:ring-0 text-sm font-semibold text-resort-dark outline-none cursor-pointer placeholder:text-resort-dark/20"
             />
           </div>
@@ -270,9 +269,9 @@ const BookingShortcut = () => {
         {/* Guests Dropdown */}
         <div className="flex-1 md:px-2">
           <CustomSelect 
-            label="Jumlah Orang" 
+            label="Rombongan" 
             icon={Users} 
-            options={['1-2 Orang', '3-4 Orang', '5+ Orang']} 
+            options={['1-5 Orang', '6-15 Orang', '20+ Orang (Acara Besar)']} 
             selected={guests} 
             setSelected={setGuests} 
           />
@@ -283,9 +282,9 @@ const BookingShortcut = () => {
         {/* Gazebo Type Dropdown */}
         <div className="flex-1 md:px-2">
           <CustomSelect 
-            label="Tipe Gazebo" 
+            label="Layanan" 
             icon={Waves} 
-            options={['Pilihan 1', 'Pilihan 2', 'Pilihan 3']} 
+            options={['Sewa Gazebo Utama', 'Wahana Sepeda Air', 'Kawasan Gathering Sosial']} 
             selected={type} 
             setSelected={setType} 
           />
@@ -334,13 +333,19 @@ const BookingForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
-    guests: '1-2 Orang',
-    type: 'Villa Premium Sangatta',
+    guests: '1-5 Orang',
+    type: 'Sewa Gazebo Utama',
     contact: ''
   });
 
   const sendWhatsApp = () => {
-    const message = `Halo Wisata Tanjung Gading, saya ${formData.name}. Saya ingin memesan ${formData.type} untuk ${formData.guests} pada tanggal ${formData.date}. Kontak saya: ${formData.contact}. Mohon infonya, terima kasih!`;
+    const message = `Halo Wisata Tanjung Gading Balikpapan, saya *${formData.name}*.\n\n` +
+                    `Saya ingin melakukan pengajuan booking rekreasi:\n` +
+                    `• *Layanan:* ${formData.type}\n` +
+                    `• *Tanggal Kunjungan:* ${formData.date}\n` +
+                    `• *Estimasi Rombongan:* ${formData.guests}\n` +
+                    `• *Kontak Pengirim:* ${formData.contact}\n\n` +
+                    `Mohon diproses peninjauannya. Terima kasih!`;
     const url = `${CONTACT_METHODS[2].href}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -351,9 +356,9 @@ const BookingForm = () => {
         <div className="lg:w-1/2 space-y-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4" aria-hidden="true">Hubungi Kami</span>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Lorem ipsum dolor sit amet</h2>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Rencanakan Momen Istimewa Anda di Alam Terbuka</h2>
             <p className="text-resort-dark/60 mt-6 leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad reiciendis quaerat laboriosam quo, minima aliquam tempora molestias illo asperiores ipsum quia veritatis, voluptatum atque, quam illum? Corporis quos repellat rerum.
+              Tanjung Gading menawarkan keasrian alam dan pesona air danau alami yang menyejukkan. Sangat ideal untuk kumpul keluarga besar, kumpul komunitas perkumpulan, hingga agenda rekreasi harian Anda di Balikpapan Utara.
             </p>
           </div>
           
@@ -363,8 +368,8 @@ const BookingForm = () => {
                 <MapPin size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-sm uppercase tracking-wider">Lokasi</h4>
-                <p className="text-resort-dark/60 text-sm mt-1">Jl. Tanjung Gading No. 12, Sangatta Utara, Kutai Timur, Kalimantan Timur</p>
+                <h4 className="font-bold text-sm uppercase tracking-wider">Lokasi Utama</h4>
+                <p className="text-resort-dark/60 text-sm mt-1">Kel. Karang Joang, Balikpapan Utara, Kota Balikpapan, Provinsi Kalimantan Timur</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -372,8 +377,8 @@ const BookingForm = () => {
                 <Phone size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-sm uppercase tracking-wider">Telepon / WA</h4>
-                <p className="text-resort-dark/60 text-sm mt-1">+62 812 3456 7890</p>
+                <h4 className="font-bold text-sm uppercase tracking-wider">Telepon & WhatsApp Resmi</h4>
+                <p className="text-resort-dark/60 text-sm mt-1">+62 813-5277-4542</p>
               </div>
             </div>
           </div>
@@ -381,10 +386,10 @@ const BookingForm = () => {
 
         <div className="lg:w-1/2">
           <div className="bg-white p-8 md:p-12 rounded-[2rem] luxury-shadow border border-resort-dark/5 space-y-6" role="form" aria-labelledby="form-title">
-            <h3 id="form-title" className="text-2xl font-serif">Formulir Pemesanan</h3>
+            <h3 id="form-title" className="text-2xl font-serif">Formulir Pemesanan & Sewa</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="res-name" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Nama Lengkap</label>
+                <label htmlFor="res-name" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Nama Lengkap Penanggung Jawab</label>
                 <input 
                   id="res-name"
                   type="text" 
@@ -394,17 +399,17 @@ const BookingForm = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="res-contact" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Nomor WhatsApp</label>
+                <label htmlFor="res-contact" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Nomor WhatsApp Aktif</label>
                 <input 
                   id="res-contact"
                   type="tel" 
-                  placeholder="0812..."
+                  placeholder="0813..."
                   className="w-full bg-resort-beige/50 border border-transparent focus:border-primary-green/20 rounded-xl px-4 py-3 outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary-green"
                   onChange={(e) => setFormData({...formData, contact: e.target.value})}
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="res-date" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Tanggal</label>
+                <label htmlFor="res-date" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Rencana Tanggal Acara</label>
                 <input 
                   id="res-date"
                   type="date" 
@@ -413,20 +418,20 @@ const BookingForm = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="res-guests" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Jumlah Orang</label>
+                <label htmlFor="res-guests" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Estimasi Jumlah Orang</label>
                 <select 
                   id="res-guests"
                   className="w-full bg-resort-beige/50 border border-transparent focus:border-primary-green/20 rounded-xl px-4 py-3 outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary-green"
                   onChange={(e) => setFormData({...formData, guests: e.target.value})}
                 >
-                  <option>1-2 Orang</option>
-                  <option>3-4 Orang</option>
-                  <option>5+ Orang</option>
+                  <option>1-5 Orang</option>
+                  <option>6-15 Orang</option>
+                  <option>20+ Orang (Acara Besar)</option>
                 </select>
               </div>
             </div>
             <div className="space-y-2">
-              <label htmlFor="res-type" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Tipe Penginapan</label>
+              <label htmlFor="res-type" className="text-[10px] uppercase font-bold text-resort-dark/40 lg:tracking-wider">Pilihan Layanan / Prasarana</label>
               <select 
                 id="res-type"
                 className="w-full bg-resort-beige/50 border border-transparent focus:border-primary-green/20 rounded-xl px-4 py-3 outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary-green"
@@ -452,7 +457,7 @@ const BookingForm = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen Selection:bg-primary-green/10">
+    <div className="min-h-screen selection:bg-primary-green/10">
       <Navbar />
 
       {/* Hero Section */}
@@ -473,14 +478,14 @@ export default function App() {
           >
             <span className="text-resort-beige/80 uppercase tracking-[0.4em] text-xs font-bold mb-6 inline-block">Escape to Nature</span>
             <h1 className="text-6xl md:text-8xl lg:text-[120px] text-resort-beige font-serif leading-[0.85] tracking-tighter mb-8">
-              Wisata <br /> <span className="text-primary-green">Tanjung Gading</span>
+              Kawasan Wisata <br /> <span className="text-primary-green">Tanjung Gading</span>
             </h1>
             <p className="text-resort-beige/70 max-w-xl mx-auto text-lg font-light leading-relaxed mb-10">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, minus! Sit modi enim eligendi a inventore quos amet laborum suscipit!
+              Menghadirkan perpaduan suasana lingkungan yang asri dan menyejukkan dengan pesona panorama danau alami yang memukau di Balikpapan Utara.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="#about" className="bg-resort-beige text-resort-dark px-10 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-primary-green hover:text-white transition-all shadow-2xl">
-                Jelajahi Resort
+                Jelajahi Wisata
               </a>
               <a href="#contact" className="border border-resort-beige/30 text-resort-beige backdrop-blur-sm px-10 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white/10 transition-all">
                 Pesan Sekarang
@@ -519,24 +524,24 @@ export default function App() {
           </div>
           
           <div className="space-y-8">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green">Selamat Datang</span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green">Selamat Datang di Karang Joang</span>
             <h2 className="text-5xl md:text-6xl font-serif leading-tight">
-              Lorem ipsum dolor sit amet
+              Pesona Alam Asri & Menyejukkan
             </h2>
             <p className="text-resort-dark/60 leading-relaxed text-lg italic">
-              "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              "Kawasan terpadu yang dirancang khusus untuk kenyamanan rekreasi luar ruangan, kumpul sosial, komunitas, serta spot berswafoto estetik keluarga."
             </p>
             <p className="text-resort-dark/60 leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet minima placeat officia recusandae dicta vitae aspernatur culpa nostrum facilis. Quod at quam possimus architecto labore praesentium provident adipisci inventore eligendi.
+              Tanjung Gading dilengkapi sarana lengkap penunjang aktivitas santai Anda. Nikmati deretan gazebo nyaman, jembatan kayu panorama di atas danau, serta aneka wahana air menarik untuk melepas penat dari hiruk pikuk atmosfer urban kota.
             </p>
             <div className="grid grid-cols-2 gap-8 py-6">
               <div>
-                <h4 className="text-3xl font-serif text-primary-green">15+</h4>
-                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Ekar Area Hijau</p>
+                <h4 className="text-3xl font-serif text-primary-green">08:00 – 18:00</h4>
+                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Jam Operasional Setiap Hari</p>
               </div>
               <div>
-                <h4 className="text-3xl font-serif text-primary-green">500+</h4>
-                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Weekly Visitors</p>
+                <h4 className="text-3xl font-serif text-primary-green">100.000+</h4>
+                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Pengunjung</p>
               </div>
             </div>
             {/* <button className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest group">
@@ -546,14 +551,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* Resort Types */}
+      {/* Resort Types / Facilities Grid */}
       <section id="resorts" className="py-24 bg-white">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4">Akomodasi</span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4">Akomodasi Fasilitas</span>
             <h2 className="text-4xl md:text-6xl font-serif">Pilih Pengalaman Anda</h2>
           </div>
-          <p className="text-resort-dark/60 md:text-right max-w-sm mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
+          <p className="text-resort-dark/60 md:text-right max-w-sm mb-2">Seluruh prasarana rekreasi dirawat berkala demi kenyamanan momen liburan keluarga Anda.</p>
         </div>
 
         <div className="container mx-auto px-6 grid md:grid-cols-3 gap-10">
@@ -572,7 +577,7 @@ export default function App() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold shadow-lg text-primary-green">
                   {resort.price}
                 </div>
               </div>
@@ -606,7 +611,7 @@ export default function App() {
               <h2 className="text-2xl font-serif font-bold tracking-tight">Wisata Tanjung Gading</h2>
             </div>
             <p className="text-resort-beige/50 max-w-sm leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda earum amet vel illo eveniet exercitationem eos sunt unde consequatur optio iste, harum, libero fugit ducimus placeat. Autem at odio dolorum.
+              Destinasi rekreasi unggulan berbasis lingkungan alam terbuka dan keasrian danau terpadu di Kota Balikpapan, Kalimantan Timur.
             </p>
             <div className="flex gap-4">
               {CONTACT_METHODS.map((method, index) => (
@@ -632,25 +637,15 @@ export default function App() {
             </ul>
           </div>
 
-          {/* <div className="space-y-6">
-            <h4 className="font-bold uppercase text-xs tracking-[0.3em]">Newsletter</h4>
-            <p className="text-resort-beige/50 text-sm">Dapatkan info promo dan event spesial langsung di email Anda.</p>
-            <div className="flex border-b border-resort-beige/20 pb-2">
-              <input 
-                type="email" 
-                placeholder="Email Anda" 
-                className="bg-transparent w-full outline-none text-sm"
-              />
-              <button className="text-primary-green"><ArrowRight size={20} /></button>
-            </div>
-          </div> */}
+          <div className="space-y-4">
+            <h4 className="font-bold uppercase text-xs tracking-[0.3em]">Alamat Resmi</h4>
+            <p className="text-resort-beige/50 text-sm leading-relaxed">
+              Kelurahan Karang Joang, Kecamatan Balikpapan Utara, Kota Balikpapan, Provinsi Kalimantan Timur, Indonesia.
+            </p>
+          </div>
         </div>
         <div className="container mx-auto px-6 mt-20 pt-8 border-t border-resort-beige/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-resort-beige/30">
           <span>&copy; 2026 Wisata Tanjung Gading. All Rights Reserved.</span>
-          {/* <div className="flex gap-8">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div> */}
         </div>
       </footer>
     </div>
