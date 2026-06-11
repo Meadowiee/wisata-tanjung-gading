@@ -31,9 +31,10 @@ import {
 // --- Constants & Types ---
 
 const CONTACT_METHODS = [
-  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/wisata_tanjung_gading' },
+  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/wisata.t_gading' },
   { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/wisata.tanjunggading' },
-  { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6281352774542' }, // Menggunakan nomor resmi dari web
+  { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6282152401147' },
+  { name: 'Google Maps', icon: MapPin, href: 'https://maps.app.goo.gl/vkQqy5vZiWaknAFm8?g_st=ic' },
 ];
 
 const NAVBAR_LINKS = [
@@ -46,38 +47,44 @@ const NAVBAR_LINKS = [
 
 const RESORT_TYPES = [
   {
-    id: 'gazebo-vip',
-    title: 'Sewa Gazebo Utama',
-    description: 'Pondokan kayu eksklusif di tepi danau yang menawarkan keteduhan alam sembari berkumpul intim bersama seluruh anggota keluarga besar Anda.',
-    price: 'Rp 50.000 / Sesi', // Menggunakan placeholder tarif lokal sewa gazebo
-    features: ['Lake View', 'Kapasitas 10 Orang', 'Dekat Area Kantin', 'Stop Kontak'],
-    image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&q=80&w=800'
+    id: 'gazebo',
+    title: 'Sewa Gazebo',
+    description: 'Pondokan kayu eksklusif di area daratan tepi danau yang menawarkan keteduhan alam sembari berkumpul intim bersama seluruh anggota keluarga besar Anda.',
+    price: 'Mulai dari Rp 150.000 / Hari',
+    features: ['Gazebo Pohon', 'Kapasitas 6-10 Orang', 'Dekat Area Kantin', 'Stop Kontak'],
+    image: '/images/resort_tinggi_2.jpeg'
   },
   {
-    id: 'wahana-air',
-    title: 'Wahana Sepeda Air',
-    description: 'Jelajahi keindahan lanskap air Tanjung Gading dengan unit bebek air ikonik. Sempurna untuk aktivitas santai sore hari.',
-    price: 'Rp 25.000 / Jam', // Placeholder tarif wahana rekreasi air
-    features: ['Safety Life Jacket', 'Kapasitas 2 Dewasa', 'Mudah Dikayuh', 'Spot Foto Danau'],
-    image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=800'
+    id: 'gazebo-air',
+    title: 'Sewa Gazebo Air',
+    description: 'Rasakan sensasi bersantai langsung di atas permukaan air danau. Dilengkapi akses jembatan kayu estetik, sangat cocok untuk menikmati angin sepoi-sepoi dan berfoto dengan latar danau lepas.',
+    price: 'Mulai dari Rp 300.000 / Hari',
+    features: ['Lake View', 'Spot Foto Danau', 'Spot Foto Sunset', 'Stop Kontak'],
+    image: '/images/resort_4.jpeg'
   },
   {
-    id: 'gathering-area',
-    title: 'Kawasan Gathering Sosial',
-    description: 'Paket sewa area terbuka hijau terpadu untuk kebutuhan arisan komunitas, perayaan hari jadi, maupun agenda outbound korporat berskala menengah.',
-    price: 'Hubungi Kami',
-    features: ['Area Luas', 'Akses Jembatan Kayu', 'Ramah Anak', 'Dekat Mushola & Toilet'],
-    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800'
+    id: 'pendopo',
+    title: 'Pendopo',
+    description: 'Kawasan aula terbuka/pendopo terpadu berskala besar yang dirancang untuk kebutuhan arisan komunitas, perayaan hari jadi, reuni, hingga agenda gathering bisnis.',
+    price: 'Rp 1.000.000 / Hari',
+    features: ['Area Luas', 'Kapasitas Rombongan Besar', 'Ramah Anak & Lansia', 'Dekat Mushola & Toilet'],
+    image: '/images/resort_2.jpeg'
   }
 ];
 
 const GALLERY_IMAGES = [
-  'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800',
+  '/images/banner_1.jpeg',
+  '/images/banner_3.jpeg',
+  '/images/banner_utama2.jpeg',
+  '/images/fasilias_food Court.jpeg',
+  '/images/fasilitas_toilet.jpeg',
+  '/images/pendopo_maybe.jpeg',
+  '/images/gazebo_air_2.jpeg',
+  '/images/resort_3.jpeg',
+  '/images/resort_4.jpeg',
+  '/images/resort_tinggi_1.jpeg',
+  '/images/scenery3.jpeg',
+  '/images/scenery5.jpeg',
 ];
 
 // --- Sub-components ---
@@ -378,7 +385,7 @@ const BookingForm = () => {
               </div>
               <div>
                 <h4 className="font-bold text-sm uppercase tracking-wider">Telepon & WhatsApp Resmi</h4>
-                <p className="text-resort-dark/60 text-sm mt-1">+62 813-5277-4542</p>
+                <p className="text-resort-dark/60 text-sm mt-1">+62 821-5240-1147 (Wahidin)</p>
               </div>
             </div>
           </div>
@@ -464,9 +471,9 @@ export default function App() {
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=2000" 
+          src="/images/scenery3.jpeg" 
           alt="Tanjung Gading Hero" 
-          className="absolute inset-0 w-full h-full object-cover scale-105 animate-slow-zoom"
+          className="absolute inset-0 w-full h-full object-cover object-top scale-105 animate-slow-zoom"
           referrerPolicy="no-referrer"
         />
         
@@ -514,7 +521,7 @@ export default function App() {
               className="rounded-[3rem] overflow-hidden aspect-[4/5] luxury-shadow relative z-10"
             >
               <img 
-                src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1000" 
+                src="/images/scenery.jpeg" 
                 alt="Tentang Kami" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -532,16 +539,16 @@ export default function App() {
               "Kawasan terpadu yang dirancang khusus untuk kenyamanan rekreasi luar ruangan, kumpul sosial, komunitas, serta spot berswafoto estetik keluarga."
             </p>
             <p className="text-resort-dark/60 leading-relaxed">
-              Tanjung Gading dilengkapi sarana lengkap penunjang aktivitas santai Anda. Nikmati deretan gazebo nyaman, jembatan kayu panorama di atas danau, serta aneka wahana air menarik untuk melepas penat dari hiruk pikuk atmosfer urban kota.
+              Tanjung Gading dilengkapi sarana lengkap penunjang aktivitas santai Anda. Nikmati deretan gazebo nyaman di tepi dan atas air, kawasan pendopo yang luas untuk acara besar, serta atmosfer alam yang tenang untuk melepas penat dari hiruk-pikuk perkotaan. Lokasi kami sangat ideal untuk kumpul keluarga besar, arisan komunitas, hingga agenda rekreasi harian Anda di Balikpapan.
             </p>
             <div className="grid grid-cols-2 gap-8 py-6">
               <div>
                 <h4 className="text-3xl font-serif text-primary-green">08:00 – 18:00</h4>
-                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Jam Operasional Setiap Hari</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Jam Operasional Harian</p>
               </div>
               <div>
-                <h4 className="text-3xl font-serif text-primary-green">100.000+</h4>
-                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Pengunjung</p>
+                <h4 className="text-3xl font-serif text-primary-green">4,6/5 ⭐</h4>
+                <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Rating Google Review</p>
               </div>
             </div>
             {/* <button className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest group">
