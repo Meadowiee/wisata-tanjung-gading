@@ -68,7 +68,7 @@ const RESORT_TYPES = [
     description: 'Kawasan aula terbuka/pendopo terpadu berskala besar yang dirancang untuk kebutuhan arisan komunitas, perayaan hari jadi, reuni, hingga agenda gathering bisnis.',
     price: 'Rp 1.000.000 / Hari',
     features: ['Area Luas', 'Kapasitas Rombongan Besar', 'Ramah Anak & Lansia', 'Dekat Mushola & Toilet'],
-    image: '/images/resort_2.jpeg'
+    image: '/images/pendopo.jpeg'
   }
 ];
 
@@ -485,7 +485,7 @@ export default function App() {
           >
             <span className="text-resort-beige/80 uppercase tracking-[0.4em] text-xs font-bold mb-6 inline-block">Escape to Nature</span>
             <h1 className="text-6xl md:text-8xl lg:text-[120px] text-resort-beige font-serif leading-[0.85] tracking-tighter mb-8">
-              Kawasan Wisata <br /> <span className="text-primary-green">Tanjung Gading</span>
+              Kawasan Wisata <br /> <span className="text-primary-brown">Tanjung Gading</span>
             </h1>
             <p className="text-resort-beige/70 max-w-xl mx-auto text-lg font-light leading-relaxed mb-10">
               Menghadirkan perpaduan suasana lingkungan yang asri dan menyejukkan dengan pesona panorama danau alami yang memukau di Balikpapan Utara.
