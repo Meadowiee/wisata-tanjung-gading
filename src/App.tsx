@@ -52,7 +52,7 @@ const RESORT_TYPES = [
     description: 'Pondokan kayu eksklusif di area daratan tepi danau yang menawarkan keteduhan alam sembari berkumpul intim bersama seluruh anggota keluarga besar Anda.',
     price: 'Mulai dari Rp 150.000 / Hari',
     features: ['Gazebo Pohon', 'Kapasitas 6-10 Orang', 'Dekat Area Kantin', 'Stop Kontak'],
-    image: '/images/resort_tinggi_2.jpeg'
+    image: '/images/gazebo-fin.jpeg'
   },
   {
     id: 'gazebo-air',
@@ -66,7 +66,7 @@ const RESORT_TYPES = [
     id: 'pendopo',
     title: 'Pendopo',
     description: 'Kawasan aula terbuka/pendopo terpadu berskala besar yang dirancang untuk kebutuhan arisan komunitas, perayaan hari jadi, reuni, hingga agenda gathering bisnis.',
-    price: 'Rp 1.000.000 / Hari',
+    price: 'Rp 1.500.000 / Hari',
     features: ['Area Luas', 'Kapasitas Rombongan Besar', 'Ramah Anak & Lansia', 'Dekat Mushola & Toilet'],
     image: '/images/pendopo.jpeg'
   }
