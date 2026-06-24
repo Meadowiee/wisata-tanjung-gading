@@ -25,7 +25,8 @@ import {
   Info,
   Waves,
   ChevronDown,
-  Check
+  Check,
+  Ticket
 } from 'lucide-react';
 
 // --- Constants & Types ---
@@ -379,13 +380,39 @@ const BookingForm = () => {
                 <p className="text-resort-dark/60 text-sm mt-1">Kel. Karang Joang, Balikpapan Utara, Kota Balikpapan, Provinsi Kalimantan Timur</p>
               </div>
             </div>
+            
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center luxury-shadow text-primary-green shrink-0" aria-hidden="true">
                 <Phone size={24} />
               </div>
               <div>
                 <h4 className="font-bold text-sm uppercase tracking-wider">Telepon & WhatsApp Resmi</h4>
-                <p className="text-resort-dark/60 text-sm mt-1">+62 821-5240-1147 (Wahidin)</p>
+                <div className="text-resort-dark/60 text-sm mt-1 space-y-1">
+                  <p><span className="font-medium text-resort-dark/80"></span> +62 821-5240-1147 (Pak Wahidin)</p>
+                  <p><span className="font-medium text-resort-dark/80"></span> +62 858-2846-8112 (Pak Mansur)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Section Harga Tiket & Parkir Baru */}
+            <div className="flex items-start gap-4 pt-2">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center luxury-shadow text-primary-green shrink-0" aria-hidden="true">
+                <Ticket size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-sm uppercase tracking-wider">Harga Tiket Masuk & Parkir</h4>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-1 mt-2 text-sm text-resort-dark/60">
+                  <div>
+                    <p className="font-medium text-resort-dark/80 border-b border-resort-dark/10 pb-0.5 mb-1">Tiket Masuk</p>
+                    <p>Dewasa: <span className="font-semibold text-primary-green">Rp 5.000</span></p>
+                    <p>Anak-anak: <span className="font-semibold text-primary-green">Rp 3.000</span></p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-resort-dark/80 border-b border-resort-dark/10 pb-0.5 mb-1">Tarif Parkir</p>
+                    <p>Mobil: <span className="font-semibold text-primary-green">Rp 5.000</span></p>
+                    <p>Motor: <span className="font-semibold text-primary-green">Rp 2.000</span></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
