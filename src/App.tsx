@@ -49,7 +49,7 @@ const NAVBAR_LINKS = [
 const RESORT_TYPES = [
   {
     id: 'gazebo',
-    title: 'Sewa Gazebo',
+    title: 'Gazebo',
     description: 'Pondokan kayu eksklusif di area daratan tepi danau yang menawarkan keteduhan alam sembari berkumpul intim bersama seluruh anggota keluarga besar Anda.',
     price: 'Mulai dari Rp 150.000 / Hari',
     features: ['Gazebo Pohon', 'Kapasitas 6-10 Orang', 'Dekat Area Kantin', 'Stop Kontak'],
@@ -57,11 +57,19 @@ const RESORT_TYPES = [
   },
   {
     id: 'gazebo-air',
-    title: 'Sewa Gazebo Air',
+    title: 'Gazebo Air',
     description: 'Rasakan sensasi bersantai langsung di atas permukaan air danau. Dilengkapi akses jembatan kayu estetik, sangat cocok untuk menikmati angin sepoi-sepoi dan berfoto dengan latar danau lepas.',
     price: 'Mulai dari Rp 300.000 / Hari',
     features: ['Lake View', 'Spot Foto Danau', 'Spot Foto Sunset', 'Stop Kontak'],
     image: '/images/resort_4.jpeg'
+  },
+  {
+    id: 'gazebo-pentas',
+    title: 'Gazebo Pentas',
+    description: 'Gazebo premium dengan ukuran lebih luas yang dilengkapi area panggung mini. Pilihan utama yang ideal untuk memandu acara, mini-gathering, atau pusat kegiatan di tengah momentum kebersamaan keluarga.',
+    price: 'Rp 400.000 / Hari',
+    features: ['Panggung Mini', 'Kapasitas Luas', 'Spot Strategis', 'Stop Kontak'],
+    image: '/images/gazebo_pentas.png'
   },
   {
     id: 'pendopo',
@@ -366,7 +374,7 @@ const BookingForm = () => {
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary-green inline-block mb-4" aria-hidden="true">Hubungi Kami</span>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight">Rencanakan Momen Istimewa Anda di Alam Terbuka</h2>
             <p className="text-resort-dark/60 mt-6 leading-relaxed">
-              Tanjung Gading menawarkan keasrian alam dan pesona air danau alami yang menyejukkan. Sangat ideal untuk kumpul keluarga besar, kumpul komunitas perkumpulan, hingga agenda rekreasi harian Anda di Balikpapan Utara.
+              Tanjung Gading offers natural serenity and the refreshing charm of a natural lake. It is ideal for large family gatherings, community functions, and your daily recreational agenda in North Balikpapan.
             </p>
           </div>
           
@@ -578,9 +586,6 @@ export default function App() {
                 <p className="text-xs uppercase tracking-widest font-bold text-resort-dark/40 mt-1">Rating Google Review</p>
               </div>
             </div>
-            {/* <button className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest group">
-              Baca Selengkapnya <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button> */}
           </div>
         </div>
       </section>
@@ -595,7 +600,8 @@ export default function App() {
           <p className="text-resort-dark/60 md:text-right max-w-sm mb-2">Seluruh prasarana rekreasi dirawat berkala demi kenyamanan momen liburan keluarga Anda.</p>
         </div>
 
-        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-10">
+        {/* UI Grid Adjusted: dari 3 kolom ke 2 kolom (medium) dan 4 kolom (large) */}
+        <div className="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {RESORT_TYPES.map((resort, idx) => (
             <motion.div 
               key={resort.id}
@@ -670,16 +676,6 @@ export default function App() {
               ))}
             </ul>
           </div>
-
-          <div className="space-y-4">
-            <h4 className="font-bold uppercase text-xs tracking-[0.3em]">Alamat Resmi</h4>
-            <p className="text-resort-beige/50 text-sm leading-relaxed">
-              Kelurahan Karang Joang, Kecamatan Balikpapan Utara, Kota Balikpapan, Provinsi Kalimantan Timur, Indonesia.
-            </p>
-          </div>
-        </div>
-        <div className="container mx-auto px-6 mt-20 pt-8 border-t border-resort-beige/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-resort-beige/30">
-          <span>&copy; 2026 Wisata Tanjung Gading. All Rights Reserved.</span>
         </div>
       </footer>
     </div>
