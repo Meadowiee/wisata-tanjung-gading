@@ -94,6 +94,9 @@ const GALLERY_IMAGES = [
   '/images/resort_tinggi_1.jpeg',
   '/images/scenery3.jpeg',
   '/images/scenery5.jpeg',
+  '/images/IoT.png',
+  '/images/gazebo_pentas.png',
+  '/images/resort_11.jpeg',
 ];
 
 // --- Sub-components ---
