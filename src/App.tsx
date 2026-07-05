@@ -616,7 +616,7 @@ export default function App() {
               <div className="relative overflow-hidden rounded-[2.5rem] aspect-[4/5] luxury-shadow mb-8">
                 <img 
                   src={resort.image} 
-                  alt={resort.title} 
+                  alt={`Fasilitas ${resort.title} di Wisata Tanjung Gading Balikpapan`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
