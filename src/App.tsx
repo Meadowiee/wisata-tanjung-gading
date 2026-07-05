@@ -113,60 +113,74 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-nav py-4 luxury-shadow' : 'bg-resort-beige py-4'}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
+        isScrolled 
+          ? 'glass-nav py-3 luxury-shadow' 
+          : 'bg-resort-beige py-5'
+      }`}
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="flex items-center gap-2 group" aria-label="Wisata Tanjung Gading Home">
-          <div className="w-10 h-10 bg-primary-green flex items-center justify-center rounded-full text-resort-beige" aria-hidden="true">
-            <Waves size={24} />
-          </div>
-          <span className="text-xl font-serif font-semibold tracking-tighter transition-colors group-hover:text-primary-green">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        
+        {/* Brand Logo & Title */}
+        <a href="#home" className="flex items-center gap-3 sm:gap-4 group flex-shrink-0" aria-label="Wisata Tanjung Gading Home">
+          <img 
+            src="/favicon.png" 
+            alt="Wisata Tanjung Gading Logo" 
+            className="w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 transition-transform duration-300 group-hover:scale-105" 
+            aria-hidden="true" 
+          />
+          {/* whitespace-nowrap prevents the text from breaking into two lines */}
+          <span className="text-lg sm:text-xl font-serif font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 group-hover:text-primary-green">
             Tanjung Gading
           </span>
         </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {NAVBAR_LINKS.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-sm font-medium uppercase tracking-widest hover:text-primary-green transition-colors focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 rounded-sm outline-none"
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Desktop Links - Changed from 'md:flex' to 'lg:flex' to accommodate half-windows */}
+        <div className="hidden lg:flex items-center lg:gap-8 xl:gap-10">
+          <div className="flex items-center lg:gap-6 xl:gap-8">
+            {NAVBAR_LINKS.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-xs font-semibold uppercase tracking-widest text-resort-dark/80 hover:text-primary-green transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 rounded-sm outline-none"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+          
           <a 
             href="#booking"
-            className="bg-primary-green text-resort-beige px-6 py-2 rounded-full text-sm font-medium uppercase tracking-widest hover:bg-primary-brown transition-all shadow-lg active:scale-95 focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 outline-none"
+            className="bg-primary-green text-resort-beige px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-primary-brown transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 focus-visible:ring-2 focus-visible:ring-primary-green focus-visible:ring-offset-2 outline-none whitespace-nowrap"
           >
             Reservasi Tempat
           </a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile & Tablet Toggle - Now handles 'lg' breakpoint */}
         <button 
-          className="md:hidden text-resort-dark p-2 focus-visible:ring-2 focus-visible:ring-primary-green rounded-lg outline-none"
+          className="lg:hidden text-resort-dark p-2 focus-visible:ring-2 focus-visible:ring-primary-green rounded-lg outline-none transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile & Tablet Dropdown Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-resort-beige border-t border-resort-dark/10 shadow-2xl py-8 flex flex-col items-center gap-6 md:hidden"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-full left-0 w-full bg-resort-beige border-t border-resort-dark/5 shadow-2xl py-10 flex flex-col items-center gap-6 lg:hidden"
             role="menu"
           >
             {NAVBAR_LINKS.map((link) => (
@@ -174,7 +188,7 @@ const Navbar = () => {
                 key={link.name} 
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-serif font-medium focus-visible:text-primary-green outline-none"
+                className="text-lg font-serif font-medium text-resort-dark hover:text-primary-green focus-visible:text-primary-green outline-none transition-colors"
                 role="menuitem"
               >
                 {link.name}
@@ -183,7 +197,7 @@ const Navbar = () => {
             <a 
               href="#booking"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="bg-primary-green text-resort-beige px-10 py-3 rounded-full text-sm font-medium uppercase tracking-widest focus-visible:ring-2 focus-visible:ring-primary-green outline-none"
+              className="mt-2 bg-primary-green text-resort-beige px-10 py-3 rounded-full text-xs font-semibold uppercase tracking-widest shadow-md focus-visible:ring-2 focus-visible:ring-primary-green outline-none"
               role="menuitem"
             >
               Reservasi Tempat
